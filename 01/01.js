@@ -1,6 +1,25 @@
 /* 1. Create a grades object that stores a set of student grades in an object. Provide a
 function for adding a grade and a function for displaying the student’s grade average. */
-const grades = {};
+function Grades() {
+  this.grades = [];
+  this.addGrade = addGrade;
+  this.averageGrade = averageGrade;
+}
+
+function addGrade(grade) {
+  this.grades.push(grade);
+}
+
+function averageGrade() {
+  const grades = this.grades;
+  let total = 0;
+  for (let i = 0; i < grades.length; i++) {
+    total += grades[i];
+  }
+  const average = Math.round(total / grades.length);
+  return average;
+}
+
 /* 2. Store a set of words in an array and display the contents both forward and backward. */
 
 /* 3. Modify the weeklyTemps object in the chapter so that it stores a month’s worth of
