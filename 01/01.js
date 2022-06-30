@@ -21,7 +21,9 @@ function averageGrade() {
 }
 
 /* 2. Store a set of words in an array and display the contents both forward and backward. */
-
+const wordStore = ["words", "a rather long word", "text", "another dummy text"];
+console.log(wordStore);
+console.log(wordStore.reverse());
 /* 3. Modify the weeklyTemps object in the chapter so that it stores a month’s worth of
 data using a two-dimensional array. Create functions to display the monthly aver‐
 age, a specific week’s average, and all the weeks’ averages. */
