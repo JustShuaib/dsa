@@ -24,9 +24,35 @@ function averageGrade() {
 const wordStore = ["words", "a rather long word", "text", "another dummy text"];
 console.log(wordStore);
 console.log(wordStore.reverse());
+
 /* 3. Modify the weeklyTemps object in the chapter so that it stores a month’s worth of
 data using a two-dimensional array. Create functions to display the monthly aver‐
 age, a specific week’s average, and all the weeks’ averages. */
-
+function weekTemps() {
+  this.dataStore = [];
+  this.add = add;
+  this.average = average;
+}
+function add(temp) {
+  this.dataStore.push(temp);
+}
+function average() {
+  var total = 0;
+  for (var i = 0; i < this.dataStore.length; ++i) {
+    total += this.dataStore[i];
+  }
+  return total / this.dataStore.length;
+}
 /* 4. Create an object that stores individual letters in an array and has a function for
 displaying the letters as a single word. */
+function ObjectStore() {
+  this.letters = [];
+  this.addLetter = addLetter;
+  this.showLetters = showLetters;
+}
+function addLetter(letter) {
+  this.letters.push(letter);
+}
+function showLetters() {
+  return this.letters.join("");
+}
