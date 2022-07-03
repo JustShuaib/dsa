@@ -90,12 +90,22 @@ function contains(element) {
   }
   return false;
 }
-
 /* 1. Write a function that inserts an element into a list only if the element to be inserted
 is larger than any of the elements currently in the list. Larger can mean either greater
 than when working with numeric values, or further down in the alphabet, when
 working with textual values.*/
-function largeInsert(element) {}
+
+function insertLarge(element, list) {
+  if (!(list instanceof List)) throw new TypeError("list must be a Type List");
+  for (list.front(); list.currPos() < list.length(); list.next()) {
+    if (element > list.getElement()) {
+      list.append(element);
+      return true;
+    }
+    return false;
+  }
+}
+
 /* 2. Write a function that inserts an element into a list only if the element to be inserted
 is smaller than any of the elements currently in the list. */
 function smallInsert(element) {}
