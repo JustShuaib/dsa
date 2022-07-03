@@ -108,7 +108,16 @@ function insertLarge(element, list) {
 
 /* 2. Write a function that inserts an element into a list only if the element to be inserted
 is smaller than any of the elements currently in the list. */
-function smallInsert(element) {}
+function smallInsert(element, list) {
+  if (!(list instanceof List)) throw new TypeError("list must be a Type List");
+  for (list.front(); list.currPos() < list.length(); list.next()) {
+    if (element < list.getElement()) {
+      list.append(element);
+      return true;
+    }
+    return false;
+  }
+}
 /* 3. Create a Person class that stores a person’s name and their gender. Create a list of
 at least 10 Person objects. Write a function that displays all the people in the list of
 the same gender.*/
