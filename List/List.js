@@ -108,6 +108,7 @@ function insertLarge(element, list) {
 
 /* 2. Write a function that inserts an element into a list only if the element to be inserted
 is smaller than any of the elements currently in the list. */
+
 function smallInsert(element, list) {
   if (!(list instanceof List)) throw new TypeError("list must be a Type List");
   for (list.front(); list.currPos() < list.length(); list.next()) {
@@ -121,14 +122,44 @@ function smallInsert(element, list) {
 /* 3. Create a Person class that stores a person’s name and their gender. Create a list of
 at least 10 Person objects. Write a function that displays all the people in the list of
 the same gender.*/
+
 class Person {
   constructor(name, gender) {
     this.name = name;
     this.gender = gender;
   }
 }
+const genderList = [
+  "male",
+  "female",
+  "hermaphrodite",
+  "mammal",
+  "queer",
+  "binary",
+  "other",
+];
+const randomNumber = () => Math.floor(Math.random() * 7);
+
 const people = new List();
-function sameGender(List) {}
+
+for (let i = 0; i < 20; i++) {
+  people.append(new Person(`user ${i + 1}`, genderList[randomNumber()]));
+}
+
+function sameGender(gender, list) {
+  if (!(list instanceof List)) throw new TypeError("list must be a Type List");
+  if (typeof gender !== "string")
+    throw new SyntaxError("gender must be a string");
+  const genderList = [];
+  for (let i = 0; i < list.length(); i++) {
+    if (list.dataStore[i].gender === gender) {
+      genderList.push(list.dataStore[i]);
+    }
+  }
+  return genderList;
+}
+const test = sameGender("female", people);
+console.log(test);
 /* 4. Modify the video-rental kiosk program so that when a movie is checked out it is
 added to a list of rented movies. Display this list whenever a customer checks out
 a movie.*/
