@@ -51,7 +51,6 @@ function baseConverter(number, base) {
   const stack = new Stack();
   do {
     stack.push(number % base);
-    // console.log(number);
     number = Math.floor((number /= base));
   } while (number > 0);
   let convertedNumber = "";
