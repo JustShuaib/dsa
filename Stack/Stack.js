@@ -39,14 +39,15 @@ function newBaseConverter(num, base) {
     stack.push(num % base);
     num = Math.floor(num / base);
   }
-  console.log(stack.dataStore);
-  // const convertedNum = "";
-  // while (stack.length() > 0) {
-  //   convertedNum += stack.pop();
-  // }
-  // return convertedNum;
+  let convertedNum = "";
+  while (stack.length() > 0) {
+    convertedNum += stack.pop();
+  }
+  return convertedNum;
 }
-console.log(newBaseConverter(80, 5));
+const myBase = newBaseConverter(7, 3);
+console.log(myBase);
+
 function baseConverter(number, base) {
   const stack = new Stack();
   do {
@@ -60,5 +61,5 @@ function baseConverter(number, base) {
   return convertedNumber;
 }
 
-const baseEight = baseConverter(80, 5);
-console.log(baseEight);
+const newBase = baseConverter(7, 3);
+console.log(newBase);
