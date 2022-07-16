@@ -46,6 +46,7 @@ function newBaseConverter(num, base) {
   return convertedNum;
 }
 const myBase = newBaseConverter(7, 3);
+// console.log(myBase)
 
 function baseConverter(number, base) {
   const stack = new Stack();
@@ -61,6 +62,7 @@ function baseConverter(number, base) {
 }
 
 const newBase = baseConverter(7, 3);
+// console.log(newBase)
 
 /* Palindrome */
 const palindromeChecker = (word) => {
@@ -78,5 +80,28 @@ const palindromeChecker = (word) => {
 const a = palindromeChecker("racecar");
 // const a = palindromeChecker("rear");
 // const a = palindromeChecker("1001");
+// console.log(a);
 
-console.log(a);
+/* Recursive factorial */
+const factorial = (number) => {
+  if (number === 0) return 1;
+  return number * factorial(number - 1);
+};
+const fiveFact = factorial(5);
+console.log(fiveFact);
+
+/* Stack factorial */
+const stackFactorial = (number) => {
+  const stack = new Stack();
+  /*  for (let i = 1; i <= number; i++) {
+    stack.push(i);
+  } */
+  while (number > 1) stack.push(number--);
+  let result = 1;
+  while (stack.length() > 0) {
+    result *= stack.pop();
+  }
+  return result;
+};
+const fiveFactTwo = stackFactorial(5);
+console.log(fiveFactTwo);
