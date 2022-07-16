@@ -46,7 +46,6 @@ function newBaseConverter(num, base) {
   return convertedNum;
 }
 const myBase = newBaseConverter(7, 3);
-console.log(myBase);
 
 function baseConverter(number, base) {
   const stack = new Stack();
@@ -62,4 +61,22 @@ function baseConverter(number, base) {
 }
 
 const newBase = baseConverter(7, 3);
-console.log(newBase);
+
+/* Palindrome */
+const palindromeChecker = (word) => {
+  const stack = new Stack();
+  for (let i = 0; i < word.length; i++) {
+    stack.push(word[i]);
+  }
+  let reverseWord = "";
+  while (stack.length() > 0) {
+    reverseWord += stack.pop();
+  }
+  return word === reverseWord;
+};
+// const a = palindromeChecker("Testing");
+const a = palindromeChecker("racecar");
+// const a = palindromeChecker("rear");
+// const a = palindromeChecker("1001");
+
+console.log(a);
