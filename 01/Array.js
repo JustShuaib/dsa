@@ -1,16 +1,14 @@
 /* 1. Create a grades object that stores a set of student grades in an object. Provide a
 function for adding a grade and a function for displaying the student’s grade average. */
-function Grades() {
-  this.grades = [];
-  this.addGrade = addGrade;
-  this.averageGrade = averageGrade;
-}
-
-function addGrade(grade) {
+class Grades {
+  constructor (){
+    this.grades = [];
+  }
+	addGrade(grade) {
   this.grades.push(grade);
 }
 
-function averageGrade() {
+	averageGrade() {
   const grades = this.grades;
   let total = 0;
   for (let i = 0; i < grades.length; i++) {
@@ -19,7 +17,7 @@ function averageGrade() {
   const average = Math.round(total / grades.length);
   return average;
 }
-
+}
 /* 2. Store a set of words in an array and display the contents both forward and backward. */
 const wordStore = ["words", "a rather long word", "text", "another dummy text"];
 console.log(wordStore.join(","));
@@ -28,17 +26,14 @@ console.log(wordStore.reverse().join(","));
 /* 3. Modify the weeklyTemps object in the chapter so that it stores a month’s worth of
 data using a two-dimensional array. Create functions to display the monthly aver‐
 age, a specific week’s average, and all the weeks’ averages. */
-function weekTemps() {
+class weekTemps {
+  constructor(){
   this.dataStore = [[], [], [], []];
-  this.addTemperature = addTemperature;
-  this.monthlyAverage = monthlyAverage;
-  this.weeklyAverage = weeklyAverage;
-  this.allWeeksAverage = allWeeksAverage;
 }
-function addTemperature(week, temp) {
+	addTemperature(week, temp) {
   this.dataStore[week - 1].push(temp);
 }
-function monthlyAverage() {
+	monthlyAverage() {
   const temps = this.dataStore;
   let total = 0;
   for (let i = 0; i < temps.length; i++) {
@@ -50,8 +45,7 @@ function monthlyAverage() {
   }
   return total / temps.length;
 }
-
-function weeklyAverage(week) {
+	weeklyAverage(week) {
   const presentWeek = this.dataStore[week - 1];
   let total = 0;
   for (let i = 0; i < presentWeek.length; i++) {
@@ -59,8 +53,7 @@ function weeklyAverage(week) {
   }
   return total / presentWeek.length;
 }
-
-function allWeeksAverage() {
+	allWeeksAverage() {
   const allWeek = this.dataStore;
   const allWeekAverageList = [];
   for (let i = 0; i < allWeek.length; i++) {
@@ -72,17 +65,17 @@ function allWeeksAverage() {
   }
   return allWeekAverageList;
 }
-
+} 
 /* 4. Create an object that stores individual letters in an array and has a function for
 displaying the letters as a single word. */
-function ObjectStore() {
+class ObjectStore {
+ constructor (){
   this.letters = [];
-  this.addLetter = addLetter;
-  this.showLetters = showLetters;
-}
-function addLetter(letter) {
+ }
+	addLetter(letter) {
   this.letters.push(letter);
 }
-function showLetters() {
+	showLetters() {
   return this.letters.join("");
 }
+} 
