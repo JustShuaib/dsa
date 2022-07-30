@@ -18,7 +18,8 @@ class Queue {
     return this.dataStore.toString();
   }
   empty() {
-    if (this.dataStore.length === 0) return true;
-    return false;
+    return this.dataStore.length === 0;
+   // if (this.dataStore.length === 0) return true;
+    //return false;
   }
 }
