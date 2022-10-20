@@ -46,20 +46,15 @@ const findString = (str: string, findStr: string, index: number = 0): number => 
   if (str[0] === findStr) return index;
   return findString(str.slice(1), findStr, index + 1);
 }
-console.log(findString(('axe'), 'x'));
-
-const rowAndCol = (row: number, col: number): number[][] => {
-  if (row === 0 || col === 0) return [[row, col]];
-  const rc = rowAndCol(row - 1, col - 1);
-  rc.push([row, col]);
-  return rc;
-};
-console.log(rowAndCol(3, 7))
-const rowAndColTwo = (rows: number, cols: number): number[][] => {
-  const rc = rowAndColTwo(rows - 1, cols - 1);
-  for (let i = 0; i < rows; i++) {
-    // if (cols === 0) return [[rows, cols]];
-    rc.push([i, cols]);
-  }
-  return rc;
+console.log(findString('axe', 'x'));
+/**
+ * This problem is known as the “Unique Paths” problem: Let’s say you have
+ * a grid of rows and columns. Write a function that accepts a number of rows
+ * and a number of columns, and calculates the number of possible “shortest”
+ * paths from the upper-leftmost square to the lower-rightmost square.
+ * */
+const uniquePaths = (rows: number, columns: number): number => {
+  if (rows === 1 || columns === 1) return 1;
+  return  uniquePaths(rows - 1, columns) + uniquePaths(rows, columns - 1);
 }
+console.log(uniquePaths(3,7))

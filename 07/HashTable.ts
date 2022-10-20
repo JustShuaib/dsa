@@ -37,13 +37,3 @@ export class HashTable {
     });
   }
 }
-const ht = new HashTable();
-ht.set("first", ["Shuaib", "Adeoti"]);
-ht.set("mid", "Olamilekan");
-ht.set("last", { name: "Olamilekan" });
-ht.set("old", "Ayinla");
-ht.set("extra", new Map<string, string>());
-ht.set("mid", ["Adeola Elemimeji"]);
-ht.set("extra", { ext: ["Adeola Elemimeji"] });
-ht.set("old", "Omowura");
-ht.show();
