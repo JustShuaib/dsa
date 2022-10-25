@@ -10,7 +10,7 @@ class DNode {
   }
 }
 
-class DoublyLinkedList {
+export class DoublyLinkedList {
   firstNode: DNode | null;
   lastNode: DNode | null;
 
@@ -18,15 +18,29 @@ class DoublyLinkedList {
     this.firstNode = firstNode;
     this.lastNode = lastNode;
   }
+
   insertAtEnd(value: any) {
     let newNode = new DNode(value);
-    if (!this.firstNode){
-      this.firstNode = newNode;
-      this.lastNode = newNode;
-    }else {
+    if (!this.firstNode) this.firstNode = this.lastNode = newNode;
+    else {
       newNode.previousNode = this.lastNode;
-      this.lastNode.nextNode = newNode;
+      this.lastNode!.nextNode = newNode;
       this.lastNode = newNode;
+    }
+  }
+
+  removeFromFront() {
+    const nodeToBeRemoved = this.firstNode!;
+    this.firstNode = nodeToBeRemoved.nextNode;
+  }
+
+  toString() {
+    //Prints all elements in reverse order
+    let currentNode = this.lastNode;
+    while (currentNode) {
+      const data = currentNode.data;
+      console.log({ data });
+      currentNode = currentNode.previousNode;
     }
   }
 }
