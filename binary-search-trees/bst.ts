@@ -29,8 +29,7 @@ class BST {
     } else if (value > node.value) {
       node.rightChild = this.delete(value, node.rightChild);
       return node;
-    } else { //value === node.value
-      if (node.leftChild === null && node.rightChild === null) return null;
+    } else {
       if (node.leftChild === null) return node.rightChild;
       else if (node.rightChild === null) return node.leftChild;
       else {
@@ -38,12 +37,10 @@ class BST {
         while (successorNode.leftChild) {
           successorNode = successorNode.leftChild;
         }
-        console.log('SUCCESSOR NODE: ' + successorNode.value)
         node.value = successorNode.value;
-        node.rightChild = this.delete(value, node.rightChild);
-        // return successorNode;
+        node.rightChild = this.delete(successorNode.value, node.rightChild);
+        return node;
       }
-      return node;
     }
   }
 
@@ -69,12 +66,7 @@ const binarySearchTree = new BST();
 binarySearchTree.insert(50);
 binarySearchTree.insert(57);
 binarySearchTree.insert(32);
-binarySearchTree.insert(76);
-binarySearchTree.insert(16);
-binarySearchTree.insert(43);
 binarySearchTree.insert(82);
-console.log('NEW FILE')
-binarySearchTree.traverse();
-binarySearchTree.delete(32);
-console.log('DELETED')
+binarySearchTree.delete(50);
+console.log(binarySearchTree.search(16));
 binarySearchTree.traverse();

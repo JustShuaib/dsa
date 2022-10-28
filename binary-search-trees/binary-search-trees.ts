@@ -32,46 +32,6 @@ const insert = (value: number, node: TreeNode) => {
   }
 }
 
-/**
- * If the value is equal to the node's value, then we delete the node. If the value is less than the node's value, then we
- * delete the node from the left child. If the value is greater than the node's value, then we delete the node from the
- * right child
- * @param {number} value - the value to be deleted
- * @param {treeNode} node - the node to be deleted
- * @returns The node that is being deleted.
- */
-/**
- * If the value is equal to the node's value, then we delete the node by replacing it with the node's right child, and then
- * we lift the node's left child up to the right child's leftmost child
- * @param {number} value - the value to be deleted
- * @param {treeNode} node - the node to be deleted
- * @returns The node that is being deleted.
- */
-/**
- * If the value is equal to the node's value, then we delete the node by replacing it with the node's right child, and then
- * we lift the node's left child up to the right child. If the value is less than the node's value, then we delete the node
- * from the left child. If the value is greater than the node's value, then we delete the node from the right child
- * @param {number} value - the value to be deleted
- * @param {treeNode} node - the node to be deleted
- * @returns The node that is being deleted.
- */
-/**
- * If the value is equal to the node's value, then we delete the node by replacing it with the node's right child, and then
- * we lift the node's left child up to the right child. If the value is less than the node's value, then we delete the node
- * from the left child. If the value is greater than the node's value, then we delete the node from the right child
- * @param {number} value - the value to be deleted
- * @param {treeNode} node - the node to be deleted
- * @returns The node that is being deleted.
- */
-
-/**
- * If the value is equal to the node's value, then we delete the node by replacing it with the node's right child, and then
- * we lift the node's left child up to the right child. If the value is less than the node's value, then we delete the node
- * from the left child. If the value is greater than the node's value, then we delete the node from the right child
- * @param {number} value - the value to be deleted
- * @param {treeNode} node - the node to be deleted
- * @returns The node that is being deleted.
- */
 const deleteNode = (value: number, node: treeNode): treeNode => {
   if (node === null) return null;
   if (value === node.value) {
@@ -85,19 +45,9 @@ const deleteNode = (value: number, node: treeNode): treeNode => {
     node.leftChild = deleteNode(value, node.leftChild);
     return node;
   }
-  // else if (value > node.value) {
   node.rightChild = deleteNode(value, node.rightChild);
   return node;
-  // }
-
 }
-/**
- * If the node has a left child, then recursively call the function on the left child. Otherwise, replace the node to be
- * deleted with the node that is being lifted
- * @param {treeNode} node - the node we're currently looking at
- * @param {TreeNode} nodeToBeDeleted - the node that we want to delete
- * @returns The node that is being returned is the node that is being deleted.
- */
 const lift = (node: TreeNode, nodeToBeDeleted: TreeNode): treeNode => {
   if (node.leftChild) {
     node.leftChild = lift(node.leftChild, nodeToBeDeleted);
@@ -126,16 +76,9 @@ const node1 = new TreeNode(27);
 const node2 = new TreeNode(78);
 const root = new TreeNode(50, node1, node2);
 console.log(search(78, root));
-console.log(root);
 insert(33, root);
 insert(96, root);
-console.log('AFTER INSERT');
-console.log(root);
 deleteNode(27, root);
-console.log('AFTER DELETING')
-console.log(root);
-console.log('TRAVERSE');
 traverse(root);
 const highest = greatestNumber(root);
-console.log('HIGHEST');
-console.log(highest);
+console.log('Highest: ' + highest);
