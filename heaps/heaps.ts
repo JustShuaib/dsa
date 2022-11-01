@@ -9,10 +9,6 @@ class Heap {
     return this.tree[0];
   }
 
-  private get lastNode() {
-    return this.tree[this.tree.length - 1]
-  }
-
   private leftChildIndex = (index: number) => (index * 2) + 1;
   private rightChildIndex = (index: number) => (index * 2) + 2;
   private parentNodeIndex = (index: number) => Math.floor((index - 1) / 2);
@@ -38,10 +34,6 @@ class Heap {
     }
   }
 
-  // private hasGreaterChild(index: number): boolean {
-  //   return ((this.tree[this.rightChildIndex(index)] && (this.tree[this.rightChildIndex(index)] > this.tree[index]))
-  //       || (this.tree[this.leftChildIndex(index)] && (this.tree[this.leftChildIndex(index)] > this.tree[index])))
-  // }
   private hasGreaterChild(index: number): boolean {
     return ((this.tree[this.rightChildIndex(index)] > this.tree[index])
         || ((this.tree[this.leftChildIndex(index)] > this.tree[index])))
