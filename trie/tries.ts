@@ -1,4 +1,4 @@
-class TrieNode {
+export class TrieNode {
   // @ts-ignore
   children: Map<string, TrieNode | null>
 
@@ -23,6 +23,11 @@ class Tries {
     return words;
   }
 
+  /**
+   * Write a function that traverses each node of a trie and prints each key,
+   * including all "*" keys
+   * @param node
+   */
   getAllKeys(node: TrieNode = this.root) {
     for (const [key, childNode] of node.children.entries()) {
       console.log(key);
@@ -30,21 +35,23 @@ class Tries {
     }
   }
 
+  /**
+   * Write an autocorrect function that attempts to replace a user’s typo with
+   * a correct word. The function should accept a string that represents text
+   * a user typed in. If the user’s string is not in the trie, the function should
+   * return an alternative word that shares the longest possible prefix with
+   * the user’s string
+   * @param word
+   */
   autocorrect(word: string) {
-    const foundWord = this.search(word);
-    if (!foundWord) {
-      let term = '';
-      for (const char of word) {
-        const found = this.search(term);
-        if (found) {
-          term += char;
-          console.log('found', found);
-          console.log('term', term);
-        }
-        // console.log(found)
-      }
+    let currentNode = this.root;
+    let prefix: string = '';
+    for (const char of word) {
+      if (currentNode.children.has(char)) {
+        prefix += char;
+        currentNode = currentNode.children.get(char)!;
+      } else return prefix + this.collectAllWords(currentNode)[0];
     }
-    return word
   }
 
   autocomplete(prefix: string) {
@@ -80,16 +87,13 @@ const trie = new Tries();
 trie.insert('cat');
 trie.insert('cattery');
 trie.insert('cathode')
+trie.insert('catnap')
+trie.insert('catnip')
 const found = trie.search('ca');
 console.log(found)
 const words = trie.collectAllWords();
 console.log(words)
 console.log(trie.autocomplete('cast'));
 trie.getAllKeys();
-const catTrie = new Tries();
-catTrie.insert('cat')
-catTrie.insert('catnap')
-catTrie.insert('catnip')
-console.log('AUTOCORRECT')
-const corr = catTrie.autocorrect('catnar');
+const corr = trie.autocorrect('catnar');
 console.log(corr)
